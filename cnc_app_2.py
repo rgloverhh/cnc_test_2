@@ -22,13 +22,11 @@ def prediction(input1, input2, input3, input4):
 st.text("Please fill in the responses below to predict primary care service level")
 
 calls_offered = st.slider(label="Choose a call volume", min_value=0, max_value=5000)
-aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5:30 is 5.5)", min_value=4.0, max_value=7.0, step=0.1)
+aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5 min 30 sec is 5.5)", min_value=4.0, max_value=7.0, step=0.1)
 not_ready = st.number_input(label="Not Ready Rate (in decimal format, i.e. 19 percent is .19)", min_value=.15, max_value=.35, step=0.01)
 total_fte = st.slider(label="Choose the total number of FTEs staffed on service line", min_value=0, max_value=65)
 call_outs = st.slider(label="Choose the estimated FTE call out equivalent", min_value=0, max_value=15)
 staffed = total_fte-call_outs
-
-feature_list = [[calls_offered, aht, not_ready, staffed]]
 
 sl_prediction = prediction(calls_offered, aht, not_ready, staffed)
 
