@@ -28,7 +28,9 @@ total_fte = st.slider(label="Choose the total number of FTEs staffed on service 
 call_outs = st.slider(label="Choose the estimated FTE call out equivalent", min_value=0, max_value=15)
 staffed = total_fte-call_outs
 
-sl_prediction = prediction(calls_offered, aht, not_ready, staffed)
+sl_prediction_temp = prediction(calls_offered, aht, not_ready, staffed)
+sl_prediction = sl_prediction_temp*100
 
-st.write(sl_prediction)
+st.header("Service Level Prediction")
+st.subheader(sl_prediction)
 
