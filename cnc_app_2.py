@@ -32,5 +32,10 @@ sl_prediction_temp = prediction(calls_offered, aht, not_ready, staffed)
 sl_prediction = sl_prediction_temp*100
 
 st.header("Service Level Prediction")
-st.subheader(sl_prediction)
+if sl_prediction <=0:
+    sl.subheader(0)
+elif sl_prediction >=100:
+    sl.subheader(100)
+else:
+    st.subheader(sl_prediction)
 
