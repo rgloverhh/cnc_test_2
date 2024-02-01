@@ -23,14 +23,20 @@ st.text("Please fill in the responses below to predict primary care service leve
 
 calls_offered = st.slider(label="Choose a call volume", min_value=500, max_value=4000)
 aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5 min 30 sec is 5.5)", min_value=4.0, max_value=7.0, step=0.1)
-not_ready = st.number_input(label="Not Ready Rate (in decimal format, i.e. 19 percent is .19)", min_value=.15, max_value=.35, step=0.01)
+not_ready = st.number_input(label="Not Ready Rate percent", min_value=15, max_value=40, step=1)
 total_fte = st.number_input(label="Choose the total number of FTEs staffed on service line", min_value=15, max_value=55, step=1)
 call_outs = st.number_input(label="Choose the estimated FTE call out equivalent", min_value=0, max_value=15)
 staffed = total_fte-call_outs
+not_ready_con = not_ready/100
 
-sl_prediction_temp = prediction(calls_offered, aht, not_ready, staffed)
+sl_prediction_temp = prediction(calls_offered, aht, not_ready_con, staffed)
 sl_prediction = sl_prediction_temp*100
 
 st.header("Service Level Prediction")
-st.subheader(sl_prediction)
+if sl_prediction <= 0:
+    st.subheader("0")
+elif sl_prediction >= 100:
+    st.subheader("100")
+else:
+    st.subheader(sl_prediction)
 
