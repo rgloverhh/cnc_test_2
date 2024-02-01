@@ -40,3 +40,6 @@ elif sl_prediction >= 100:
 else:
     st.subheader(sl_prediction)
 
+st.caption("Modeling used is multiple linear regression and was trained on CNC call data Oct 2022 - Jan 2024*")
+st.caption("*as of 2/1/24")
+
