@@ -22,7 +22,7 @@ def prediction(input1, input2, input3, input4):
 st.text("Please fill in the responses below to predict primary care service level")
 
 calls_offered = st.number_input(label="Choose a call volume", min_value=500, max_value=3000, step=1)
-aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5min 30sec = 5.5 -> 0.1 = 6 sec)", min_value=4.0, max_value=7.0, step=0.1)
+aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5.5 = 5min 30sec -> 0.1 = 6 sec)", min_value=4.0, max_value=7.0, step=0.1)
 not_ready = st.number_input(label="Not Ready Rate (%)", min_value=15, max_value=40, step=1)
 ftes_logged_in = st.number_input(label="Choose the total number of FTEs logged in for the day (use PowerBI as a guide)", min_value=15.0, max_value=55.0, step=0.5)
 
