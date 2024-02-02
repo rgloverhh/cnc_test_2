@@ -26,6 +26,8 @@ aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5min 3
 not_ready = st.number_input(label="Not Ready Rate (%)", min_value=15, max_value=40, step=1)
 ftes_logged_in = st.number_input(label="Choose the total number of FTEs logged in for the day (use PowerBI as a guide)", min_value=15.0, max_value=55.0, step=0.5)
 
+not_ready_con = not_ready/100
+
 sl_prediction_temp = prediction(calls_offered, aht, not_ready_con, ftes_logged_in)
 sl_prediction = sl_prediction_temp*100
 
